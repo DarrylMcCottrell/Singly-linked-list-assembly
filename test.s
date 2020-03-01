@@ -6,56 +6,55 @@
 .equ  payload, 8
 
 InitRegs:
-		stp		x29, x30, [sp, -16]!
-		stp     x20, x21, [sp, -16] !
-		mov		x0, xzr
+				stp		x29, x30, [sp, -16]!
+				stp     x20, x21, [sp, -16]!
+				mov		x0, xzr
 
-		mov 	x1, 1
-		mov		x2, 2
-		mov		x3, 3
-		mov		x4, 4
-		mov		x5, 5
-		mov		x6, 6
-		mov		x7, 7
-		mov		x8, 8
-		mov		x9, 9
-		mov		x10, 10
-		mov		x11, 11
-		mov		x12, 12
-		mov		x13, 13
-		mov		x14, 14
-		mov		x15, 15
-		mov		x16, 16
-		mov		x17, 17
-		mov		x18, 18
-		mov		x19, 19
-		mov		x20, 20
-		mov		x21, 21
-		mov		x22, 22
-		mov		x23, 23
-		mov		x24, 24
-		mov		x25, 25
-		mov		x26, 26
-		mov		x27, 27
-		mov		x28, 28
-		ldp		x29, x30, [sp], 16
-		ret
+				mov 	x1, 1
+				mov		x2, 2
+				mov		x3, 3
+				mov		x4, 4
+				mov		x5, 5
+				mov		x6, 6
+				mov		x7, 7
+				mov		x8, 8
+				mov		x9, 9
+				mov		x10, 10
+				mov		x11, 11
+				mov		x12, 12
+				mov		x13, 13
+				mov		x14, 14
+				mov		x15, 15
+				mov		x16, 16
+				mov		x17, 17
+				mov		x18, 18
+				mov		x19, 19
+				mov		x20, 20
+				mov		x21, 21
+				mov		x22, 22
+				mov		x23, 23
+				mov		x24, 24
+				mov		x25, 25
+				mov		x26, 26
+				mov		x27, 27
+				mov		x28, 28
+				ldp		x29, x30, [sp], 16
+				ret
 		
-
-main:	stp		x29, x30, [sp, -16]!
-		bl		InitRegs
-		mov		x0, 16			// suggest inf reg
-		bl		malloc			// suggest inf reg
-		ldr		x1, =index
-		str		x0, [x1]
-		str		x0, [sp, -16]!
-		bl		InitRegs
-		ldr		x1, [sp], 16
-		ldr		x0, =s
-		bl		printf
-		ldp		x29, x30, [sp], 16
-		mov		x0, xzr 
-		ret
+main:			stp		x29, x30, [sp, -16]!
+				bl		InitRegs
+				mov		x0, 16			// suggest inf reg
+				bl		malloc			// suggest inf reg
+				ldr		x1, =index
+				str		x0, [x1]
+				str		x0, [sp, -16]!
+				bl		InitRegs
+				ldr		x1, [sp], 16
+				ldr		x0, =s
+				bl		printf
+				ldp		x29, x30, [sp], 16
+				mov		x0, xzr 
+				ret
 
 head:   		ldr		x0, [x3, +next]
 				ldr 	w1, [x3, payload] 
@@ -104,7 +103,7 @@ remove_find:
 				bl 		free
 				ldmia 	sp!, {x0, x4, pc} 	// ret head to stack
 				bl 		printf
-				
+
 bottom: 		ldp     x20, x21, [sp], 16
                 ldp     x29, x30, [sp], 16
                 mov     x0, xzr
